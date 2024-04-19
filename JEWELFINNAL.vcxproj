@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F94ED0C1-FC40-4913-AC5E-31909B1ED160}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+    <QtInstall>6.1.0_msvc2019_64</QtInstall>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QtInstall>6.0.2_msvc2019_64</QtInstall>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>D:\QtNew\6.1.0\msvc2019_64\include;C:\Users\zi\Desktop\mysql-8.0.25-winx64\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>C:\web\mysql-8.0.25-winx64\include;$(VC_IncludePath);D:\APP\QT5.15\6.0.2\msvc2019_64\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>C:\web\mysql-8.0.25-winx64\include;.\;$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\web\mysql-8.0.25-winx64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(Qt_LIBS_);libmysql.lib;D:\APP\QT5.15\6.0.2\msvc2019_64\lib\Qt6Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\zi\Desktop\mysql-8.0.25-winx64\include;D:\QtNew\6.1.0\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\zi\Desktop\mysql-8.0.25-winx64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(Qt_LIBS_);libmysql.lib;D:\QtNew\6.1.0\msvc2019_64\lib\Qt6Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="DataBase.cpp" />
+    <ClCompile Include="forgetPassword.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameMask.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameStatus.cpp" />
+    <ClCompile Include="GameTask.cpp" />
+    <ClCompile Include="HIntButton.cpp" />
+    <ClCompile Include="Jewel.cpp" />
+    <ClCompile Include="MatrixNode.cpp" />
+    <ClCompile Include="mysetting.cpp" />
+    <ClCompile Include="PatternScene.cpp" />
+    <ClCompile Include="QNumber.cpp" />
+    <ClCompile Include="RankScene.cpp" />
+    <ClCompile Include="Register.cpp" />
+    <ClCompile Include="ResLoader.cpp" />
+    <ClCompile Include="ScoreBoard.cpp" />
+    <ClCompile Include="Smtp.cpp" />
+    <ClCompile Include="SpeedRankScene.cpp" />
+    <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="SubMenu.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="WashButton.cpp" />
+    <QtRcc Include="login.qrc" />
+    <ClCompile Include="ClassicScene.cpp" />
+    <ClCompile Include="login.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="forgetPassword.ui" />
+    <QtUic Include="login.ui" />
+    <QtUic Include="mysetting.ui" />
+    <QtUic Include="Register.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClassicScene.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="HIntButton.h" />
+    <ClInclude Include="MatrixNode.h" />
+    <ClInclude Include="QNumber.h" />
+    <ClInclude Include="ScoreBoard.h" />
+    <ClInclude Include="WashButton.h" />
+    <QtMoc Include="mysetting.h" />
+    <QtMoc Include="forgetPassword.h" />
+    <ClInclude Include="GameMask.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameStatus.h" />
+    <ClInclude Include="GameTask.h" />
+    <ClInclude Include="Jewel.h" />
+    <ClInclude Include="RankScene.h" />
+    <ClInclude Include="Smtp.h" />
+    <ClInclude Include="SpeedRankScene.h" />
+    <ClInclude Include="SubMenu.h" />
+    <ClInclude Include="User.h" />
+    <QtMoc Include="login.h" />
+    <ClInclude Include="DataBase.h" />
+    <ClInclude Include="PatternScene.h" />
+    <QtMoc Include="Register.h" />
+    <ClInclude Include="ResLoader.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="StartScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HappyPop.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
